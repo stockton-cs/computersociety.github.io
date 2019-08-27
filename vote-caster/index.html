@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Voting Application</title>
+    <!--Bootstrap Fonts & Icons-->
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <!--bootstrap cdn=======-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!--main css markup-->
+    <link rel="stylesheet" href="voter.css">
+    <!--realtime voting scripts-->
+    <script type="text/javascript" src="https://cdn.ably.io/lib/ably.min-1.js"></script>
+    <!--voting controls-->
+    <script type="text/javascript" src="index.js"></script>
+    <!--google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu&display=swap" rel="stylesheet">
+    <!--TODO: responsive.css-->
+</head>
+<body>
+    <section id="app-body">
+      <!-- Mobile friendly nav-->
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+          <a class="navbar-brand" href="#">Voting App</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="../index.html">Home <span class="sr-only">(current)</span></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#modal-open">
+                  Directions
+                </a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Options
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" onclick="alert('Feature coming soon')">Election Mode</a>
+                  <a class="dropdown-item" href="https://github.com/SatherWS/vote-caster" target="_blank">Vote Caster Source Code</a>
+                  <a class="dropdown-item" href="https://github.com/SatherWS/realtime-voting-app" target="_blank">Results Chart Source Code</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="https://github.com/SatherWS/PHP_Voting_App" target="_blank">PHP & MYSQL Version</a>
+                </div>
+              </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+              <input class="form-control mr-sm-2" type="search" placeholder="Suggest a topic" aria-label="Search">
+              <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Submit</button>
+            </form>
+          </div>
+        </nav>
+        <div class="content">
+          <div class="content-text">
+            <h1>Voting App</h1>
+            <p>Click <a href="https://d7o9k.csb.app/" target="_blank">here</a> to track the results.</p>
+          </div>     
+            <form>
+                <div class="votes">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <button onclick="yesVote()" type="submit" name="ballot" value="yes" class="btn btn-outline-success form-control">Yes</button>
+                        </div>
+                        <div class="col-md-4">
+                            <button onclick="noVote()" type="submit" name="ballot" value="no" class="no btn btn-outline-success form-control">No</button>
+                        </div>
+                        <div class="col-md-4">
+                          <button onclick="maybeVote()" type="submit" name="ballot" value="maybe" class="maybe btn btn-outline-success form-control">Maybe</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div id="modal-open" class="modalDialog">
+          <div>
+            <div class="x-close text-right">
+              <a href="#close" id="close" class="text-left">X</a>
+            </div>
+            <h3>How to Use the Application</h3>
+            <ol>
+              <li>Open the chart app in a new tab <a href="https://d7o9k.csb.app/" target="_blank">here</a></li>
+              <li>Cast a vote (yes, no, or maybe)</li>
+              <li>Watch votes update in realtime</li>
+            </ol>
+            <p><strong>Disclaimer:</strong> The chart will reset upon refresh for accurate results make sure at the chart app is launched <strong>before voting starts.</strong></p>
+          </div>
+        </div>
+    </section>
+    <!--jQuery then bootstrap cdn-->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>
